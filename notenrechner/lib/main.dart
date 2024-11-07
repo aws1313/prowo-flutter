@@ -2,10 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:notenrechner/widgets/eintragung.dart';
 import 'package:notenrechner/widgets/schnitt.dart';
-import 'package:path_provider/path_provider.dart';
 
 Future<void> main() async {
-  
   Hive.initFlutter(); // Hivwe (interner Speicher) wird aufgesetzt
   var box = await Hive.openBox('noten'); // kreiere eine Box mit dem Namen 'noten'
    List<String> facherListe = ['Deutsch','Mathe','Latein','Englisch','Geschichte','Politik','Sport','Kunst','Musik','Physik','Chemie','Biologie','Informatik','Religion','Ethik','Wirtschaft','Geographie','Französisch','Spanisch','Italienisch']; // Liste  mit Fächern
@@ -55,6 +53,8 @@ class _MyHomePageState extends State<MyHomePage> {
     super.dispose();
     Hive.close();
   }
+
+
 
   @override
   Widget build(BuildContext context) {

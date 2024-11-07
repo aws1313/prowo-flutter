@@ -17,25 +17,25 @@ class Schnitt extends StatelessWidget {
         child: Column(
           children: [
             ValueListenableBuilder(
-  valueListenable: Hive.box('noten').listenable(),
-  builder: (context, Box box, widget) {
-    double totalAverage = 0;
-    int count = 0;
-    for (var fach in facherListe) {
-      var data = box.get(fach);
-      if (data != null && data['summe'] is num && data['anzahl'] is num && data['anzahl'] != 0) {
-        double summe = data['summe'].toDouble();
-        double anzahl = data['anzahl'].toDouble();
-        if (summe.isFinite && anzahl.isFinite && anzahl > 0) {
-          double average = summe / anzahl;
-          totalAverage += average;
-          count++;
+                valueListenable: Hive.box('noten').listenable(),
+                builder: (context, Box box, widget) {
+                double totalAverage = 0;
+                int count = 0;
+                for (var fach in facherListe) {
+                  var data = box.get(fach);
+                  if (data != null && data['summe'] is num && data['anzahl'] is num && data['anzahl'] != 0) {
+                    double summe = data['summe'].toDouble();
+                    double anzahl = data['anzahl'].toDouble();
+                    if (summe.isFinite && anzahl.isFinite && anzahl > 0) {
+                      double average = summe / anzahl;
+                      totalAverage += average;
+                      count++;
         }
       }
-    }
+    }//checke ob count 0 ist und rechnen den Schnitt aus
     double overallAverage = count > 0 ? totalAverage / count : 0;
     return Text("Gesamtschnitt: ${overallAverage.toStringAsFixed(1)}");
-  },
+  },// der Gesammt schnitt
 ),
           ],
         ),

@@ -6,7 +6,7 @@ import 'package:flutter/material.dart';
 class EintragNote extends StatefulWidget {
   bool eintragBool;
   
-  EintragNote({super.key, required this.eintragBool});
+  EintragNote({super.key, required this.eintragBool}); // eintragBool wird als Parameter übergeben
 
   
 
@@ -17,7 +17,7 @@ class EintragNote extends StatefulWidget {
 class _EintragNoteState extends State<EintragNote> {
   var box = Hive.box('noten');
   String dropVal = 'hi';
-  TextEditingController textController = TextEditingController();
+  TextEditingController textController = TextEditingController(); // nimmt die Eingabe der Note auf
   String selectedValue = 'Deutsch';
 
  
@@ -43,14 +43,14 @@ class _EintragNoteState extends State<EintragNote> {
     const DropdownMenuItem(value: 'Französisch', child: Text('Französisch')),
     const DropdownMenuItem(value: 'Spanisch', child: Text('Spanisch')),
     const DropdownMenuItem(value: 'Italienisch', child: Text('Italienisch')),
-  ];
+  ]; //Auswahlmöglichkeiten des Dropdown Menüs
 
   void onChanged(Object? value) {
     setState(() {
       dropVal = value.toString();
       selectedValue = value.toString();
     });
-  }
+  } //ändert den Wert des Dropdown Menüs
 
   
   @override
@@ -81,10 +81,10 @@ class _EintragNoteState extends State<EintragNote> {
             });
           },
           child: const Text('Eintragen'),
-        ),
+        ),//Button zur Eintragung der Note
       ],
     ),)
     )
-    );
+    );// das Widget wird nur angezeigt wenn eintragBool true ist
   }
 }
